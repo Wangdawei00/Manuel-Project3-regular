@@ -19,7 +19,9 @@ public:
     static void setPrice();
     double get_all_time();//in seconds'
     double getPrice();
-//    void arrive();
-//    void depart();
+
+    void arrive();
+    std::string getArriTime();
+    void depart();
 };
 #endif //PROJECT3_VEHICLE_H

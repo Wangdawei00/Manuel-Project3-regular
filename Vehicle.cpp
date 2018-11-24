@@ -5,6 +5,7 @@
 #include "Vehicle.h"
 #include <iostream>
 #include <ctime>
+#include "Ticket.h"
 //#define DEBUG
 //const std::map<int, std::string> Vehicle::indexType={{1,"Bicycle"},{2,"Motorbike"},{3,"Car"},{4,"Van"}};
 
@@ -28,9 +29,8 @@ void Vehicle::setPrice() {
             std::cout << iter.first << ": ";
             std::cin >> iter.second;
         }
-    }
-    else {
-        std::cerr<<"You have already set the price for the vehicles!\n";
+    } else {
+        std::cerr << "You have already set the price for the vehicles!\n";
     }
 #ifdef DEBUG
     for (auto &iter:typePrice) {
@@ -40,9 +40,22 @@ void Vehicle::setPrice() {
 }
 
 double Vehicle::get_all_time() {
-    return difftime(departTime,arriTime);
+    return difftime(departTime, arriTime);
 }
 
 double Vehicle::getPrice() {
-    return (this->price)*get_all_time();
+    return (this->price) * get_all_time();
+}
+
+void Vehicle::arrive() {
+    time(&arriTime);
+}
+
+std::string Vehicle::getArriTime() {
+    std::string s = asctime(localtime(&arriTime));
+    return s;
+}
+
+void Vehicle::depart() {
+    time(&departTime);
 }
