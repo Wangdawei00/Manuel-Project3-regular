@@ -1,7 +1,11 @@
 # Manuel-Project3
 vg101 project 3
+
+
 Singleton 是单例， 但我还不清楚怎么用，先放在那里
+
 Vehicle 这个类我把index(size)这个attribute取消了，原因是我有一个map来联系一辆车和它停车的单价。
+
 Map：
 map是这样的，map<key, value> 在map中每个key都对应唯一的一个value. 有一个find函数 find(key),返回的是指向那一组的迭代器的指针（iterator），可以被理解为
 一个结构体，里面有两个成员，first和second。
