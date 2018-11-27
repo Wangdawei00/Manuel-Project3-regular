@@ -23,5 +23,6 @@ public:
     void arrive();
     std::string getArriTime();
     void depart();
+    std::string getType();
 };
 #endif //PROJECT3_VEHICLE_H

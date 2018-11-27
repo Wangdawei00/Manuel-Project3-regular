@@ -8,7 +8,7 @@
 #include "Ticket.h"
 //#define DEBUG
 //const std::map<int, std::string> Vehicle::indexType={{1,"Bicycle"},{2,"Motorbike"},{3,"Car"},{4,"Van"}};
-
+//using namespace std::chrono;
 std::map<std::string, double> Vehicle::typePrice;
 
 Vehicle::Vehicle(std::string type) {
@@ -58,4 +58,8 @@ std::string Vehicle::getArriTime() {
 
 void Vehicle::depart() {
     time(&departTime);
+}
+
+std::string Vehicle::getType() {
+    return this->type;
 }
