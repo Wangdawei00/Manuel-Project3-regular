@@ -2,7 +2,7 @@
 vg101 project 3
 
 
-Singleton 是单例， 但我还不清楚怎么用，先放在那里
+Singleton 是单例， 用法如下：Singleton &a=getInstance(); a前面一定要加&， 不然就是在调用protected的constructor
 
 Vehicle 这个类我把index(size)这个attribute取消了，原因是我有一个map来联系一辆车和它停车的单价。
 
