@@ -7,22 +7,28 @@
 
 #include <map>
 
-class Vehicle{
+class Vehicle {
 private:
     std::string type;
     static std::map<std::string, double> typePrice;
     double price;
-    time_t arriTime,departTime;
+    time_t arriTime, departTime;
 
 public:
     explicit Vehicle(std::string);
+
     static void setPrice();
+
     double get_all_time();//in seconds'
     double getPrice();
 
     void arrive();
+
     std::string getArriTime();
+
     void depart();
+
     std::string getType();
 };
+
 #endif //PROJECT3_VEHICLE_H

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <ctime>
 #include "Ticket.h"
+
 //#define DEBUG
 //const std::map<int, std::string> Vehicle::indexType={{1,"Bicycle"},{2,"Motorbike"},{3,"Car"},{4,"Van"}};
 //using namespace std::chrono;

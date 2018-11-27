@@ -11,7 +11,12 @@
 using namespace std;
 
 int main() {
-    this_thread::sleep_for(2min);
+    Vehicle::setPrice();
+    Vehicle a("Car");
+    a.arrive();
+    this_thread::sleep_for(10s);
+    a.depart();
+    cout<<a.getPrice()<<endl;
 //    cout<<Vehicle::a.find(1)->second<<endl;
 //    Vehicle::setPrice();
 //    Singleton &a=Singleton::getInstance();
