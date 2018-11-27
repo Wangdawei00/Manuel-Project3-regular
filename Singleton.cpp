@@ -8,17 +8,12 @@ Singleton::Singleton() = default;
 
 Singleton::~Singleton() = default;
 
-Singleton *Singleton::getInstance() {
-    static Singleton *s = nullptr;
-    if (s == nullptr) s = new Singleton();
+Singleton &Singleton::getInstance() {
+    static Singleton s;
+//    if (s == nullptr) s = new Singleton();
     return s;
 }
 
-void Singleton::deleteInstance() {
-    Singleton *s = getInstance();
-    delete s;
-//    s= nullptr;
-}
 
 Singleton &Singleton::operator=(Singleton const &) = default;
 

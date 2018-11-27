@@ -7,9 +7,9 @@
 
 class Singleton {
 public:
-    static Singleton *getInstance();
+    static Singleton &getInstance();
 
-    static void deleteInstance();
+//    static void deleteInstance();
 
 protected:
     Singleton();
@@ -20,7 +20,7 @@ protected:
 
     Singleton &operator=(Singleton const &);
 
-    static Singleton *instance;
+//    static Singleton *instance;
 };
 
 #endif //PROJECT3_SINGLETON_H
