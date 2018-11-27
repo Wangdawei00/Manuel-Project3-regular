@@ -11,5 +11,6 @@ using namespace std;
 int main() {
 //    cout<<Vehicle::a.find(1)->second<<endl;
     Vehicle::setPrice();
+    Singleton &a=Singleton::getInstance();
     return 0;
 }
