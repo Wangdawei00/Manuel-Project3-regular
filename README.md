@@ -15,4 +15,5 @@ map是这样的，map<key, value> 在map中每个key都对应唯一的一个valu
 for(auto & iter: typePrice) 被称为范围for语句，用处是遍历某个对象， iter是迭代器的名字， typePrice是我要遍历的对象，&是引用（reference）的标志，
 auto代表编译器自动帮我判断iter的类型， 它如果被完整地写出来应该是TypePrice::iterator, 由于这个名字太长了，所以用auto。
 
-Vehicle里面
+Vehicle里面我加了一个getType函数
+
