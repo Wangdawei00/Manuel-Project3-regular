@@ -14,6 +14,6 @@ add_executable(Manuel_Project3
         vector.cpp
         vector.h
         Vehicle.cpp
-        Vehicle.h)
-#        slot.cpp
-#        Floor.cpp)
+        Vehicle.h
+        slot.cpp
+        Floor.cpp)

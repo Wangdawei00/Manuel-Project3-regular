@@ -6,7 +6,6 @@
 #define PROJECT3_TICKET_H
 
 #include <string>
-//#include <wsman.h>
 
 class Ticket{
 protected:
