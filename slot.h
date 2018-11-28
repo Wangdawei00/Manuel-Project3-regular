@@ -15,7 +15,6 @@ public:
     Vehicle& return_vehicle();
     std::string return_type();
     void Make_empty();
-
 private:
     Vehicle *V;
     std::string type;

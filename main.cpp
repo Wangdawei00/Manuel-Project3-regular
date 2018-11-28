@@ -6,7 +6,6 @@
 #include "Vehicle.h"
 #include <thread>
 //#include <ctime>
-
 //#include <GL/glut.h>
 using namespace std;
 

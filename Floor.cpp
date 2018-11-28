@@ -22,15 +22,18 @@ Floor::Floor(int rowIn, int columnIn, string &typeIn) {
     }
 }
 
-Slot Floor::find_empty_slot(std::string type) {
-    for (int i = 0; i < column; i++) {
-        vector<Slot> a = slots[i];
+Slot &Floor::find_empty_slot() {
+//    vector<Slot> a;
+    for (int i = 0; i < row; i++) {
         for (int j = 0; j < column; j++) {
-            if (a[j].Is_empty() == 1 && a[j].return_type() == type) {
-                return a[j];
+            if (slots[i][j].Is_empty() == 1) {
+                return slots[i][j];
             }
         }
     }
+}
+vector<Slot>& Floor::operator[](int row) {
+    return slots[row];
 }
 
 void Floor::clear_slot(int rowIn, int columnIn) {
