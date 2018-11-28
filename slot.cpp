@@ -7,11 +7,12 @@
 
 Slot::Slot(std::string typein, Vehicle *temp) {
     type = std::move(typein);
-    V= temp;
+    V = temp;
 }
-Slot::Slot(std::string typein){
-    type=std::move(typein);
-    V= nullptr;
+
+Slot::Slot(std::string typein) {
+    type = std::move(typein);
+    V = nullptr;
 }
 
 int Slot::Is_empty() {
@@ -20,16 +21,18 @@ int Slot::Is_empty() {
     return empty;
 }
 
-Vehicle& Slot::return_vehicle() {
+Vehicle &Slot::return_vehicle() {
     if (V != nullptr) {
         return *V;
     }
 }
+
 std::string Slot::return_type() {
     return type;
 }
+
 void Slot::Make_empty() {
-    if (V!= nullptr) {
-        V= nullptr;
+    if (V != nullptr) {
+        V = nullptr;
     }
 }
