@@ -14,6 +14,7 @@ Floor::Floor(int rowIn, int columnIn, string &typeIn) {
     column = columnIn;
     vector<Slot> a;
     for (i = 0; i < column; ++i) {
+        a.clear();
         a.push_back(S);
         for (j = 0; j < row; ++j) {
             slots.push_back(a);
