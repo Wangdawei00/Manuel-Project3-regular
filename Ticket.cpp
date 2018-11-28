@@ -22,16 +22,26 @@ void DepartTicket::print() {
     std::cout<<s<<std::endl;
 }
 
-DepartTicket::DepartTicket(int time, double price, std::string type) {
+void DepartTicket::set(int time, double price, std::string) {
     this->time=time;
     this->price=price;
     this->type=std::move(type);
 }
 
-ArriTicket::ArriTicket(std::string arriTime, int floor, int column, int row, std::string type) {
+void ArriTicket::set(std::string arriTime, int floor, int column, int row, std::string type) {
     this->type=std::move(type);
     this->floor=floor;
     this->column=column;
     this->row=row;
     this->arriTime=std::move(arriTime);
+}
+
+ArriTicket::ArriTicket() {
+    floor=column=row=-1;
+    type=arriTime="";
+}
+
+DepartTicket::DepartTicket() {
+    price=time=-1;
+    type="";
 }

@@ -19,14 +19,16 @@ class ArriTicket:public Ticket{
     std::string arriTime;
     int floor, column, row;
 public:
-    ArriTicket(std::string arriTime,int floor,int column, int row,std::string type);
+    ArriTicket();
     void print() override;
+    void set(std::string arriTime,int floor,int column, int row,std::string type);
 };
 
 class DepartTicket:public Ticket{
     int time; double price;
 public:
-    DepartTicket(int time,double price, std::string);
+    DepartTicket();
     void print() override;
+    void set(int time,double price, std::string);
 };
 #endif //PROJECT3_TICKET_H
