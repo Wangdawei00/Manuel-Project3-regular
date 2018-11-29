@@ -35,6 +35,8 @@ vector<int> &Floor::find_empty_slot() {
             }
         }
     }
+    static vector<int> b = vector<int>(2, -1);
+    return b;
 }
 
 

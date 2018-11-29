@@ -17,6 +17,8 @@ private:
 public:
     explicit Vehicle(std::string);
 
+    Vehicle();
+
     static void setPrice();
 
     double get_all_time();//in seconds'

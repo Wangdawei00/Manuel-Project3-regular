@@ -64,3 +64,5 @@ void Vehicle::depart() {
 std::string Vehicle::getType() {
     return this->type;
 }
+
+Vehicle::Vehicle() = default;

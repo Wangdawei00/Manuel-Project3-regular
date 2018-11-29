@@ -14,10 +14,10 @@ public:
     Vehicle& return_vehicle();
     std::string return_type();
     void Make_empty();
-    void put_vehicle(Vehicle *temp);
+    void put_vehicle(Vehicle &temp);
 
 private:
-    Vehicle *V;
+    Vehicle V;
     std::string type;
     bool empty;
 };
