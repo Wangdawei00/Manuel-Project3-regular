@@ -6,20 +6,27 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
-
+#include <fstream>
+#include <random>
 using namespace std;
 
 ParkingLot::ParkingLot() {
-    namesMap.insert(make_pair("Car", 0));
-    namesMap.insert(make_pair("Van", 1));
-    namesMap.insert(make_pair("Bicycle", 2));
-    namesMap.insert(make_pair("Motorbike", 3));
-    names[0] = "Car";
-    names[1] = "Van";
-    names[2] = "Bicycle";
-    names[3] = "Motorbike";
+    ifstream in;
+    in.open("VehicleType.txt",ios::in);
+    for (int j = 0; in>>names[j] ; ++j) {
+        namesMap.insert(make_pair(names[j],j));
+    }
+    random_device randomDevice;
+//    namesMap.insert(make_pair("Car", 0));
+//    namesMap.insert(make_pair("Van", 1));
+//    namesMap.insert(make_pair("Bicycle", 2));
+//    namesMap.insert(make_pair("Motorbike", 3));
+//    names[0] = "Car";
+//    names[1] = "Van";
+//    names[2] = "Bicycle";
+//    names[3] = "Motorbike";
     for (int i = 0; i < 4; ++i) {
-        floors.insert(make_pair(names[i], Floor(rand() % 2 + 5, rand() % 2 + 5, names[i], i)));
+        floors.insert(make_pair(names[i], Floor(randomDevice() % 2 + 5, randomDevice() % 2 + 5, names[i], i)));
     }
 //    floors.insert(make_pair("Car",Floor()));
 //    floors.insert(make_pair("Van",1));
@@ -32,12 +39,12 @@ ParkingLot::ParkingLot() {
 }
 
 vector<int> &ParkingLot::find_empty_slot(string type) {
-    int i;
+//    int i;
     //map<string,int> floorMap;
-    Floor &f = floors.find(type)->second;;//!!! 我觉得是不是要加入vehicle的变量，让vehicle存进去？？
+    Floor &floor = floors.find(type)->second;//!!! 我觉得是不是要加入vehicle的变量，让vehicle存进去？？
     static vector<int> result(3, 0);
-    result = f.find_empty_slot();
-    result.push_back(namesMap.find(type)->second);
+    result = floor.find_empty_slot();
+    result.insert(result.begin(),namesMap.find(type)->second);
     return result;
 }
 
