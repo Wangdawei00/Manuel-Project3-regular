@@ -10,7 +10,7 @@
 class Slot{
 public:
     explicit Slot (std::string typein);
-    int Is_empty();
+    bool Is_empty();
     Vehicle& return_vehicle();
     std::string return_type();
     void Make_empty();
@@ -19,6 +19,6 @@ public:
 private:
     Vehicle *V;
     std::string type;
-    int empty;
+    bool empty;
 };
 #endif //MANUEL_PROJECT3_MASTER_SLOT_H

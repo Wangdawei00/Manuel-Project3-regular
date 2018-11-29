@@ -10,9 +10,9 @@ Slot::Slot(std::string typein){
     V= nullptr;
 }
 
-int Slot::Is_empty() {
-    if (V == nullptr) empty = 1;
-    else empty = 0;
+bool Slot::Is_empty() {
+    if (V == nullptr) empty = true;
+    else empty = false;
     return empty;
 }
 
