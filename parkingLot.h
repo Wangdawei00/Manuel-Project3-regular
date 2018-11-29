@@ -16,7 +16,7 @@ class ParkingLot {
 public:
     ParkingLot();
 
-    vector<int> &find_empty_slot(string sizeOfCar);
+    vector<int> &find_empty_slot(string type);
 
     // return floor and the location,);
     void clearSlot(int floor, int row, int column);
