@@ -8,8 +8,8 @@
 //#include <GL/.>
 //#include "Floor.h"
 //#include <ctime>
-#include <GL/glut.h>
-#include <GL/freeglut.h>
+//#include <GL/glut.h>
+//#include <GL/freeglut.h>
 using namespace std;
 
 int main() {

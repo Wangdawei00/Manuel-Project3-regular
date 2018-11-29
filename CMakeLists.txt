@@ -5,9 +5,9 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-find_package(OpenGL REQUIRED)
-find_package(GLUT REQUIRED)
-include_directories(${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS})
+#find_package(OpenGL REQUIRED)
+#find_package(GLUT REQUIRED)
+#include_directories(${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS})
 
 add_executable(Manuel_Project3
         main.cpp
@@ -21,5 +21,5 @@ add_executable(Manuel_Project3
         Vehicle.h
         slot.cpp
         Floor.cpp)
-target_link_libraries(Manuel_Project3 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+#target_link_libraries(Manuel_Project3 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 
