@@ -1,25 +1,23 @@
 cmake_minimum_required(VERSION 3.12)
-project(Manuel_Project3)
+project(testcpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-#find_package(OpenGL REQUIRED)
-#find_package(GLUT REQUIRED)
-#include_directories(${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS})
-
-add_executable(Manuel_Project3
+add_executable(testcpp
+        Floor.cpp
+        Floor.h
         main.cpp
+        parkingLot.cpp
+        parkingLot.h
         Singleton.cpp
         Singleton.h
+        slot.cpp
+        slot.h
         Ticket.cpp
         Ticket.h
         vector.cpp
         vector.h
         Vehicle.cpp
-        Vehicle.h
-        slot.cpp
-        Floor.cpp)
-#target_link_libraries(Manuel_Project3 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
-
+        Vehicle.h)

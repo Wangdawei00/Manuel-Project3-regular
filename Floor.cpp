@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Floor::Floor(int rowIn, int columnIn, string typeIn) {
+Floor::Floor(int rowIn, int columnIn, string typeIn,int index) {
     Slot S = Slot(std::move(typeIn));
     int i, j;
     row = rowIn;
@@ -19,6 +19,7 @@ Floor::Floor(int rowIn, int columnIn, string typeIn) {
             slots.push_back(a);
         }
     }
+    this->index=index;
 }
 
 vector<int> &Floor::find_empty_slot() {
