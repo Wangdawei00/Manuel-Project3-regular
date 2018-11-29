@@ -20,8 +20,6 @@ Vehicle& Slot::return_vehicle() {
     if (V != nullptr) {
         return *V;
     }
-    cout<<"No car in this slot"<<endl;
-    return NULL;
 }
 std::string Slot::return_type() {
     return type;
