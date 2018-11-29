@@ -37,6 +37,7 @@ void Vehicle::setPrice() {
             std::cout << iter.first << ": ";
             std::cin >> iter.second;
         }
+        in.close();
     } else {
         std::cerr << "You have already set the price for the vehicles!\n";
     }

@@ -28,6 +28,7 @@ ParkingLot::ParkingLot() {
     for (int i = 0; i < 4; ++i) {
         floors.insert(make_pair(names[i], Floor(randomDevice() % 2 + 5, randomDevice() % 2 + 5, names[i], i)));
     }
+    in.close();
 //    floors.insert(make_pair("Car",Floor()));
 //    floors.insert(make_pair("Van",1));
 //    floors.insert(make_pair("Bicycle",2));
