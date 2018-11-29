@@ -39,8 +39,8 @@ vector<int> &Floor::find_empty_slot() {
 
 
 void Floor::clear_slot(int rowIn, int columnIn) {
-    vector<Slot> a = slots[columnIn];
-    a[rowIn].Make_empty();
+    vector<Slot> a = slots[rowIn];
+    a[columnIn].Make_empty();
 }
 
 vector<Slot> &Floor::operator[](int a) {
