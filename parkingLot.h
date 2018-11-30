@@ -23,8 +23,9 @@ public:
 
     void pushSlot(Vehicle &vehicle, int row, int column);
 
-private:
     Floor &operator[](int floorIndex);
+
+private:
 
     map<string, Floor> floors;
     map<string, int> namesMap;
