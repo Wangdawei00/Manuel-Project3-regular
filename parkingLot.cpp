@@ -51,8 +51,8 @@ vector<int> &ParkingLot::find_empty_slot(string type) {
     return result;
 }
 
-void ParkingLot::clearSlot(int floor, int row, int column) {
-    floors.find(names[floor])->second.clear_slot(row, column);
+void ParkingLot::clearSlot(string const &type, int row, int column) {
+    floors.find(type)->second.clear_slot(row, column);
 }
 
 Floor &ParkingLot::operator[](int floorIndex) {

@@ -19,7 +19,7 @@ public:
     vector<int> &find_empty_slot(string type);
 
     // return floor and the location;
-    void clearSlot(int floor, int row, int column);
+    void clearSlot(string const& type, int row, int column);
 
     void pushSlot(Vehicle &vehicle, int row, int column);
 
