@@ -21,10 +21,15 @@ public:
     // return floor and the location,);
     void clearSlot(int floor, int row, int column);
 
+    void pushSlot(Vehicle &vehicle, int row, int column);
+
 private:
+    Floor &operator[](int floorIndex);
+
     map<string, Floor> floors;
     map<string, int> namesMap;
     vector<string> names;
+
 };
 
 #endif //TESTCPP_PARKINGLOT_H

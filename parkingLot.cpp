@@ -4,17 +4,19 @@
 #include "Floor.h"
 #include "parkingLot.h"
 #include <string>
-#include <cstdlib>
+//#include <cstdlib>
 #include <vector>
 #include <fstream>
 #include <random>
+#include <map>
+
 using namespace std;
 
 ParkingLot::ParkingLot() {
     ifstream in;
-    in.open("VehicleType.txt",ios::in);
-    for (int j = 0; in>>names[j] ; ++j) {
-        namesMap.insert(make_pair(names[j],j));
+    in.open("VehicleType.txt", ios::in);
+    for (int j = 0; in >> names[j]; ++j) {
+        namesMap.insert(make_pair(names[j], j));
     }
     random_device randomDevice;
 //    namesMap.insert(make_pair("Car", 0));
@@ -45,10 +47,18 @@ vector<int> &ParkingLot::find_empty_slot(string type) {
     Floor &floor = floors.find(type)->second;//!!! 我觉得是不是要加入vehicle的变量，让vehicle存进去？？
     static vector<int> result(3, 0);
     result = floor.find_empty_slot();
-    result.insert(result.begin(),namesMap.find(type)->second);
+    result.insert(result.begin(), namesMap.find(type)->second);
     return result;
 }
 
 void ParkingLot::clearSlot(int floor, int row, int column) {
     floors.find(names[floor])->second.clear_slot(row, column);
+}
+
+Floor& ParkingLot::operator[](int floorIndex) {
+    return floors.find(names[floorIndex])->second;
+}
+
+void ParkingLot::pushSlot(Vehicle &vehicle,int row,int column) {
+    (*this)[(namesMap.find(vehicle.getType()))->second][row][column].put_vehicle(vehicle);
 }
