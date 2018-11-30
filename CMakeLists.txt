@@ -1,23 +1,19 @@
 cmake_minimum_required(VERSION 3.12)
-project(testcpp)
+project(project3_regular)
 
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(testcpp
+add_executable(project3_regular
         Floor.cpp
         Floor.h
         main.cpp
         parkingLot.cpp
         parkingLot.h
-        Singleton.cpp
-        Singleton.h
         slot.cpp
         slot.h
         Ticket.cpp
         Ticket.h
-        vector.cpp
-        vector.h
         Vehicle.cpp
         Vehicle.h)
