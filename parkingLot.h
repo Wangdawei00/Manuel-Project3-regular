@@ -14,7 +14,7 @@ using namespace std;
 
 class ParkingLot {
 public:
-    ParkingLot();
+    explicit ParkingLot(string fileName);
 
     vector<int> &find_empty_slot(string type);
 

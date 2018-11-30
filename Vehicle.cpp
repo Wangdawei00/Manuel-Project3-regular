@@ -18,14 +18,14 @@ Vehicle::Vehicle(std::string type) {
     this->price = typePrice.find(this->type)->second;
 }
 
-void Vehicle::setPrice() {
+void Vehicle::setPrice(std::string fileName) {
     if (typePrice.empty()) {
         std::string name;
         std::ifstream in;
-        in.open("VehicleType.txt",std::ios::in);
+        in.open(fileName,std::ios::in);
         std::string s(50, '*');
         std::cout << s << std::endl;
-        std::cout << "Please set the price for the following vehicles (in RMB per second): " << std::endl;
+        std::cout << "Please set the price for the following vehicles (in RMB per hour): " << std::endl;
 //        typePrice.insert(std::make_pair("Car", 0));
 //        typePrice.insert(std::make_pair("Motorbike", 0));
 //        typePrice.insert(std::make_pair("Bicycle", 0));

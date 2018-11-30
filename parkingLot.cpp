@@ -12,9 +12,9 @@
 
 using namespace std;
 
-ParkingLot::ParkingLot() {
+ParkingLot::ParkingLot(string fileName) {
     ifstream in;
-    in.open("VehicleType.txt", ios::in);
+    in.open(fileName, ios::in);
     for (int j = 0; in >> names[j]; ++j) {
         namesMap.insert(make_pair(names[j], j));
     }

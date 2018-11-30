@@ -19,7 +19,7 @@ public:
 
     Vehicle();
 
-    static void setPrice();
+    static void setPrice(std::string fileName);
 
     double get_all_time();//in seconds'
     double getPrice();
