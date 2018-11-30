@@ -55,10 +55,10 @@ void ParkingLot::clearSlot(int floor, int row, int column) {
     floors.find(names[floor])->second.clear_slot(row, column);
 }
 
-Floor& ParkingLot::operator[](int floorIndex) {
+Floor &ParkingLot::operator[](int floorIndex) {
     return floors.find(names[floorIndex])->second;
 }
 
-void ParkingLot::pushSlot(Vehicle &vehicle,int row,int column) {
+void ParkingLot::pushSlot(Vehicle &vehicle, int row, int column) {
     (*this)[(namesMap.find(vehicle.getType()))->second][row][column].put_vehicle(vehicle);
 }
