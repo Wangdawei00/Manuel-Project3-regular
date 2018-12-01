@@ -15,11 +15,12 @@ Floor::Floor(int rowIn, int columnIn, string typeIn,int index) {//generate a new
     vector<Slot> a;//generate a vector of Slot(a type defined in "slot.h")
     for (i = 0; i < column; ++i) {
         a.push_back(S);//add new element(a new slot "S")to the end of the vector "a"
-        for (j = 0; j < row; ++j) {
-            slots.push_back(a);//add "a"to the end of the whole slots
-        }
-    }//这边循环的写法是不是有点问题鸭
+
+    }
     this->index=index;
+    for (j = 0; j < row; ++j) {
+        slots.push_back(a);//add "a"to the end of the whole slots
+    }
 }
 
 vector<int> &Floor::find_empty_slot() {
