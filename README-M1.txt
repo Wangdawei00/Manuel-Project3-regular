@@ -22,7 +22,7 @@ Detailed Description:
 	Because most of those .cpp files above are the interfaces of different classes, I would like to directly explain those classes.
 	
 	Class Slot:
-		Every slot has its type. which is related to the vehicles. That's because the basic floor needs to make all the vehicles stop on this floor belonging to the same type, so that drivers can easily identify which floor to go. And some circumstances such as a bike occupying a slot for cars will never happen.
+		Every slot has its type. which is related to the vehicles. That's because the basic floor needs to make all the vehicles stop on this floor belonging to the same type, so that drivers can easily identify which floor to go. And circumstances such as a bike occupying a slot for cars will never happen.
 		
 		When a slot is initialized, it is empty. And there are methods to identify whether it is empty and also to change its mode.
 		
