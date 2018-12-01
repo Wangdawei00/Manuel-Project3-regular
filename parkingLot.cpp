@@ -12,11 +12,11 @@
 
 using namespace std;
 
-ParkingLot::ParkingLot(string fileName) {
+ParkingLot::ParkingLot(string fileName) {//take the filename as an input
     ifstream in;
     in.open(fileName, ios::in);
     for (int j = 0; in >> names[j]; ++j) {
-        namesMap.insert(make_pair(names[j], j));
+        namesMap.insert(make_pair(names[j], j));//use make_pair to regard name and its ID as a whole part
     }
     random_device randomDevice;
 //    namesMap.insert(make_pair("Car", 0));
@@ -29,7 +29,7 @@ ParkingLot::ParkingLot(string fileName) {
 //    names[3] = "Motorbike";
     for (int i = 0; i < 4; ++i) {
         floors.insert(make_pair(names[i], Floor(randomDevice() % 2 + 5, randomDevice() % 2 + 5, names[i], i)));
-    }
+    }//generate "floors":each floor has its name, as well as a "floor" which contains its size and type
     in.close();
 //    floors.insert(make_pair("Car",Floor()));
 //    floors.insert(make_pair("Van",1));
@@ -44,10 +44,11 @@ ParkingLot::ParkingLot(string fileName) {
 vector<int> &ParkingLot::find_empty_slot(string type) {
 //    int i;
     //map<string,int> floorMap;
-    Floor &floor = floors.find(type)->second;//!!! 我觉得是不是要加入vehicle的变量，让vehicle存进去？？
+    Floor &floor = floors.find(type)->second;
     static vector<int> result(3, 0);
     result = floor.find_empty_slot();
-    result.insert(result.begin(), namesMap.find(type)->second);
+    result.insert(result.begin(), namesMap.find(
+            type)->second);//in "result", there are three elements,which are [floor number][row][column] respectively
     return result;
 }
 
@@ -56,7 +57,7 @@ void ParkingLot::clearSlot(string const &type, int row, int column) {
 }
 
 Floor &ParkingLot::operator[](int floorIndex) {
-    return floors.find(names[floorIndex])->second;
+    return floors.find(names[floorIndex])->second;//return the "floorIndex" floor
 }
 
 void ParkingLot::pushSlot(Vehicle &vehicle, int row, int column) {

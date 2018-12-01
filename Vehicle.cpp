@@ -9,59 +9,62 @@
 #include <fstream>
 
 //#define DEBUG
-//const std::map<int, std::string> Vehicle::indexType={{1,"Bicycle"},{2,"Motorbike"},{3,"Car"},{4,"Van"}};
-//using namespace std::chrono;
-std::map<std::string, double> Vehicle::typePrice;
+//const map<int, string> Vehicle::indexType={{1,"Bicycle"},{2,"Motorbike"},{3,"Car"},{4,"Van"}};
+//using namespace chrono;
 
-Vehicle::Vehicle(std::string type) {
-    this->type = std::move(type);
+using namespace std;
+
+map<string, double> Vehicle::typePrice; //set typePrice as a map whose key is a string and value is a double
+
+Vehicle::Vehicle(string type) {
+    this->type = move(type);
     this->price = typePrice.find(this->type)->second;
 }
 
-void Vehicle::setPrice(std::string fileName) {
+void Vehicle::setPrice(string fileName) {
     if (typePrice.empty()) {
-        std::string name;
-        std::ifstream in;
-        in.open(fileName,std::ios::in);
-        std::string s(50, '*');
-        std::cout << s << std::endl;
-        std::cout << "Please set the price for the following vehicles (in RMB per hour): " << std::endl;
-//        typePrice.insert(std::make_pair("Car", 0));
-//        typePrice.insert(std::make_pair("Motorbike", 0));
-//        typePrice.insert(std::make_pair("Bicycle", 0));
-//        typePrice.insert(std::make_pair("Van", 0));
+        string name;
+        ifstream in;
+        in.open(fileName,ios::in);
+        string s(50, '*');
+        cout << s << endl;
+        cout << "Please set the price for the following vehicles (in RMB per hour): " << endl;
+//        typePrice.insert(make_pair("Car", 0));
+//        typePrice.insert(make_pair("Motorbike", 0));
+//        typePrice.insert(make_pair("Bicycle", 0));
+//        typePrice.insert(make_pair("Van", 0));
         for (int i = 0; in>>name; ++i) {
-            typePrice.insert(std::make_pair(name,0));
+            typePrice.insert(make_pair(name,0));//initialize the price for each type of vehicles by input
         }
         for (auto &iter : typePrice) {
-            std::cout << iter.first << ": ";
-            std::cin >> iter.second;
+            cout << iter.first << ": ";
+            cin >> iter.second; //output all the vehicles' type and their related prices
         }
         in.close();
     } else {
-        std::cerr << "You have already set the price for the vehicles!\n";
+        cerr << "You have already set the price for the vehicles!\n";
     }
 #ifdef DEBUG
     for (auto &iter:typePrice) {
-        std::cout<<iter.first<<": "<<iter.second<<std::endl;
+        cout<<iter.first<<": "<<iter.second<<endl;
     }
 #endif
 }
 
 double Vehicle::get_all_time() {
-    return difftime(departTime, arriTime);
+    return difftime(departTime, arriTime);//calculate how long the vehicle spent in the parking lot
 }
 
 double Vehicle::getPrice() {
-    return (this->price) * get_all_time();
+    return (this->price) * get_all_time();//price times time=cost
 }
 
 void Vehicle::arrive() {
     time(&arriTime);
 }
 
-std::string Vehicle::getArriTime() {
-    std::string s = asctime(localtime(&arriTime));
+string Vehicle::getArriTime() {
+    string s = asctime(localtime(&arriTime));//get the local time form of the car's arriving time
     return s;
 }
 
@@ -69,7 +72,7 @@ void Vehicle::depart() {
     time(&departTime);
 }
 
-std::string Vehicle::getType() {
+string Vehicle::getType() {
     return this->type;
 }
 

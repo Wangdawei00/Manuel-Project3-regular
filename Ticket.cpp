@@ -4,44 +4,47 @@
 
 #include <iostream>
 #include "Ticket.h"
+
+using namespace std;
+
 void ArriTicket::print() {
-    std::string s(50,'*');
-    std::cout<<s<<std::endl;
-    std::cout<<"Time of arrival: "<<this->arriTime<<std::endl;
-    std::cout<<"Type of the vehicle: "<< this->type<<std::endl;
-    std::cout<<"Empty slot location: Floor "<<this->floor<<" Row "<<this->row<<" Column "<<this->column<<std::endl;
-    std::cout<<s<<std::endl;
+    string s(50,'*');
+    cout<<s<<endl;//draw a line with 50 "*" stars
+    cout<<"Time of arrival: "<<this->arriTime<<endl;
+    cout<<"Type of the vehicle: "<< this->type<<endl;
+    cout<<"Empty slot location: Floor "<<this->floor<<" Row "<<this->row<<" Column "<<this->column<<endl;
+    cout<<s<<endl;
 }
 
 void DepartTicket::print() {
-    std::string s(50,'*');
-    std::cout<<s<<std::endl;
-    std::cout<<"Time spent in the parking lot: "<<this->time<<" minutes"<<std::endl;
-    std::cout<<"Type of the vehicle: "<< this->type<<std::endl;
-    std::cout<<"Price: "<<this->price<<std::endl;
-    std::cout<<s<<std::endl;
+    string s(50,'*');
+    cout<<s<<endl;
+    cout<<"Time spent in the parking lot: "<<this->time<<" minutes"<<endl;
+    cout<<"Type of the vehicle: "<< this->type<<endl;
+    cout<<"Price: "<<this->price<<endl;
+    cout<<s<<endl;
 }
 
-void DepartTicket::set(int time, double price, std::string) {
+void DepartTicket::set(int time, double price, string type) {
     this->time=time;
     this->price=price;
-    this->type=std::move(type);
+    this->type=move(type);
 }
 
-void ArriTicket::set(std::string arriTime, int floor, int column, int row, std::string type) {
-    this->type=std::move(type);
+void ArriTicket::set(string arriTime, int floor, int column, int row, string type) {
+    this->type=move(type);
     this->floor=floor;
     this->column=column;
     this->row=row;
-    this->arriTime=std::move(arriTime);
+    this->arriTime=move(arriTime);
 }
 
-ArriTicket::ArriTicket() {
+ArriTicket::ArriTicket() {//initialization of the arriving part
     floor=column=row=-1;
     type=arriTime="";
 }
 
-DepartTicket::DepartTicket() {
+DepartTicket::DepartTicket() {//initialization of the departing part
     price=time=-1;
     type="";
 }

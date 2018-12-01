@@ -6,8 +6,8 @@
 #include "Vehicle.h"
 
 Slot::Slot(std::string typein) {
-    type = std::move(typein);
-    empty = true;
+    type = std::move(typein);//set the type of the slot
+    empty = true;//make this slot be empty
 }
 
 bool Slot::Is_empty() {
@@ -27,6 +27,6 @@ void Slot::Make_empty() {
 }
 
 void Slot::put_vehicle(Vehicle &temp) {
-    V = temp;
+    V = temp;//set the V to be the vehicle "temp"
     empty = false;
 }
