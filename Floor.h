@@ -13,7 +13,7 @@ class Floor {
 public:
     Floor(int row,int column,string typeIn,int index);
 
-    vector<int> &find_empty_slot();
+    vector<int> const &find_empty_slot();
     void clear_slot(int rowIn,int columnIn);
     vector<Slot> &operator[](int a);
 private:

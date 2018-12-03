@@ -22,7 +22,7 @@ Floor::Floor(int rowIn, int columnIn, string typeIn,int index) {//generate a new
     }
 }
 
-vector<int> &Floor::find_empty_slot() {
+vector<int> const &Floor::find_empty_slot() {
 //    int (*empty)[2];
     for (int i = 0; i < row; i++) {
         vector<Slot> a = slots[i];//take out the "i" row of the whole "slots"
@@ -36,9 +36,7 @@ vector<int> &Floor::find_empty_slot() {
             }
         }
     }
-    static vector<int> b = vector<int>(2, -1);//otherwise return (-1,-1) to indicate no empty slot
-    b[0]=-1;
-    b[1]=-1;
+    static const vector<int> b = vector<int>(2, -1);//otherwise return (-1,-1) to indicate no empty slot
     return b;
 }
 
