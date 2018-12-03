@@ -7,7 +7,8 @@
 
 using namespace std;
 
-Floor::Floor(int rowIn, int columnIn, string typeIn,int index) {//generate a new floor according to the rowIn,columnIn and typeIn
+Floor::Floor(int rowIn, int columnIn, string typeIn,
+             int index) {//generate a new floor according to the rowIn,columnIn and typeIn
     Slot S = Slot(std::move(typeIn));//generate a new slot(a type defined in "slot.h") with the type of "typeIn"
     int i, j;
     row = rowIn;
@@ -16,7 +17,7 @@ Floor::Floor(int rowIn, int columnIn, string typeIn,int index) {//generate a new
     for (i = 0; i < column; ++i) {
         a.push_back(S);//add new element(a new slot "S")to the end of the vector "a"
     }
-    this->index=index;
+    this->index = index;
     for (j = 0; j < row; ++j) {
         slots.push_back(a);//add "a"to the end of the whole slots
     }

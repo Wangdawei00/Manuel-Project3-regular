@@ -7,7 +7,6 @@
 #include <ctime>
 #include "Ticket.h"
 #include <fstream>
-
 //#define DEBUG
 //const map<int, string> Vehicle::indexType={{1,"Bicycle"},{2,"Motorbike"},{3,"Car"},{4,"Van"}};
 //using namespace chrono;
@@ -25,7 +24,7 @@ void Vehicle::setPrice(string fileName) {
     if (typePrice.empty()) {
         string name;
         ifstream in;
-        in.open(fileName,ios::in);
+        in.open(fileName, ios::in);
         string s(50, '*');
         cout << s << endl;
         cout << "Please set the price for the following vehicles (in RMB per hour): " << endl;
@@ -33,8 +32,8 @@ void Vehicle::setPrice(string fileName) {
 //        typePrice.insert(make_pair("Motorbike", 0));
 //        typePrice.insert(make_pair("Bicycle", 0));
 //        typePrice.insert(make_pair("Van", 0));
-        for (int i = 0; in>>name; ++i) {
-            typePrice.insert(make_pair(name,0));//initialize the price for each type of vehicles by input
+        for (int i = 0; in >> name; ++i) {
+            typePrice.insert(make_pair(name, 0));//initialize the price for each type of vehicles by input
         }
         for (auto &iter : typePrice) {
             cout << iter.first << ": ";
@@ -51,11 +50,11 @@ void Vehicle::setPrice(string fileName) {
 #endif
 }
 
-double Vehicle::get_all_time() const{
+double Vehicle::get_all_time() const {
     return difftime(departTime, arriTime);//calculate how long the vehicle spent in the parking lot
 }
 
-double Vehicle::getPrice() const{
+double Vehicle::getPrice() const {
     return (this->price) * get_all_time();//price times time=cost
 }
 
@@ -63,7 +62,7 @@ void Vehicle::arrive() {
     time(&arriTime);
 }
 
- string Vehicle::getArriTime() const{
+string Vehicle::getArriTime() const {
     string s = asctime(localtime(&arriTime));//get the local time form of the car's arriving time
     return s;
 }
@@ -77,3 +76,18 @@ string Vehicle::getType() const {
 }
 
 Vehicle::Vehicle() = default;
+
+void Vehicle::setPrice() {
+    if (typePrice.empty()) {
+        string s(50, '*');
+        cout << s << endl;
+        cout << "Please set the price for the following vehicles (in RMB per hour): " << endl;
+        for (auto item:vehicleNames) {
+            typePrice.insert(make_pair(item, 0));
+        }
+        for (auto &iter:typePrice) {
+            cout << iter.first << ": ";
+            cin >> iter.second;
+        }
+    }
+}

@@ -11,8 +11,7 @@
 #include <map>
 
 using namespace std;
-static const int numOfVehicleDefault = 4;
-static const char *vehicleNames[numOfVehicleDefault] = {"Car", "Van", "Motorbike", "Bicycle"};
+
 
 ParkingLot::ParkingLot(string fileName) {//take the filename as an input
     ifstream in;

@@ -7,6 +7,9 @@
 
 #include <map>
 
+static const int numOfVehicleDefault = 4;
+static const char *vehicleNames[numOfVehicleDefault] = {"Car", "Van", "Motorbike", "Bicycle"};
+
 class Vehicle {
 private:
     std::string type;
@@ -21,8 +24,10 @@ public:
 
     static void setPrice(std::string fileName);
 
-    double get_all_time() const ;//in seconds'
-    double getPrice()const ;
+    static void setPrice();
+
+    double get_all_time() const;//in seconds'
+    double getPrice() const;
 
     void arrive();
 

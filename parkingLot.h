@@ -7,18 +7,22 @@
 
 #include <iostream>
 #include <vector>
+#include "Vehicle.h"
 #include "Floor.h"
 #include "slot.h"
 
 using namespace std;
+
 class ParkingLot {
 public:
     explicit ParkingLot(string fileName);
+
     ParkingLot();
+
     vector<int> &find_empty_slot(string type);
 
     // return floor and the location;
-    void clearSlot(string const& type, int row, int column);
+    void clearSlot(string const &type, int row, int column);
 
     void pushSlot(Vehicle &vehicle, int row, int column);
 
