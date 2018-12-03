@@ -37,6 +37,8 @@ vector<int> &Floor::find_empty_slot() {
         }
     }
     static vector<int> b = vector<int>(2, -1);//otherwise return (-1,-1) to indicate no empty slot
+    b[0]=-1;
+    b[1]=-1;
     return b;
 }
 
