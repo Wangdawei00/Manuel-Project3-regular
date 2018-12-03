@@ -11,11 +11,10 @@
 #include "slot.h"
 
 using namespace std;
-
 class ParkingLot {
 public:
     explicit ParkingLot(string fileName);
-
+    ParkingLot();
     vector<int> &find_empty_slot(string type);
 
     // return floor and the location;

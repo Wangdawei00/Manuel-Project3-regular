@@ -11,11 +11,15 @@
 #include <map>
 
 using namespace std;
+static const int numOfVehicleDefault = 4;
+static const char *vehicleNames[numOfVehicleDefault] = {"Car", "Van", "Motorbike", "Bicycle"};
 
 ParkingLot::ParkingLot(string fileName) {//take the filename as an input
     ifstream in;
     in.open(fileName, ios::in);
-    for (int j = 0; in >> names[j]; ++j) {
+    string temp;
+    for (int j = 0; in >> temp; ++j) {
+        names.push_back(temp);
         namesMap.insert(make_pair(names[j], j));//use make_pair to regard name and its ID as a whole part
     }
     random_device randomDevice;
@@ -27,7 +31,7 @@ ParkingLot::ParkingLot(string fileName) {//take the filename as an input
 //    names[1] = "Van";
 //    names[2] = "Bicycle";
 //    names[3] = "Motorbike";
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < names.size(); ++i) {
         floors.insert(make_pair(names[i], Floor(randomDevice() % 2 + 5, randomDevice() % 2 + 5, names[i], i)));
     }//generate "floors":each floor has its name, as well as a "floor" which contains its size and type
     in.close();
@@ -62,4 +66,15 @@ Floor &ParkingLot::operator[](int floorIndex) {
 
 void ParkingLot::pushSlot(Vehicle &vehicle, int row, int column) {
     (*this)[(namesMap.find(vehicle.getType()))->second][row][column].put_vehicle(vehicle);
+}
+
+ParkingLot::ParkingLot() {
+    for (int i = 0; i < numOfVehicleDefault; ++i) {
+        names.emplace_back(vehicleNames[i]);
+        namesMap.insert(make_pair(names[i], i));
+    }
+    random_device randomDevice;
+    for (int i = 0; i < names.size(); ++i) {
+        floors.insert(make_pair(names[i], Floor(randomDevice() % 2 + 5, randomDevice() % 2 + 5, names[i], i)));
+    }
 }
