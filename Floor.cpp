@@ -15,7 +15,6 @@ Floor::Floor(int rowIn, int columnIn, string typeIn,int index) {//generate a new
     vector<Slot> a;//generate a vector of Slot(a type defined in "slot.h")
     for (i = 0; i < column; ++i) {
         a.push_back(S);//add new element(a new slot "S")to the end of the vector "a"
-
     }
     this->index=index;
     for (j = 0; j < row; ++j) {
