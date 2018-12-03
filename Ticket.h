@@ -7,27 +7,33 @@
 
 #include <string>
 
-class Ticket{
+class Ticket {
 protected:
     std::string type;
 public:
-    virtual void print()=0;
+    virtual void print() = 0;
 };
 
-class ArriTicket:public Ticket{
+class ArriTicket : public Ticket {
     std::string arriTime;
     int floor, column, row;
 public:
     ArriTicket();
+
     void print() override;
-    void set(std::string arriTime,int floor,int column, int row,std::string type);
+
+    void set(std::string const &arriTime, int floor, int row, int column, std::string const &type);
 };
 
-class DepartTicket:public Ticket{
-    int time; double price;
+class DepartTicket : public Ticket {
+    double time;
+    double price;
 public:
     DepartTicket();
+
     void print() override;
-    void set(int time,double price, std::string);
+
+    void set(double time, double price, std::string const &type);
 };
+
 #endif //PROJECT3_TICKET_H

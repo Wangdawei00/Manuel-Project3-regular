@@ -51,11 +51,11 @@ void Vehicle::setPrice(string fileName) {
 #endif
 }
 
-double Vehicle::get_all_time() {
+double Vehicle::get_all_time() const{
     return difftime(departTime, arriTime);//calculate how long the vehicle spent in the parking lot
 }
 
-double Vehicle::getPrice() {
+double Vehicle::getPrice() const{
     return (this->price) * get_all_time();//price times time=cost
 }
 
@@ -63,7 +63,7 @@ void Vehicle::arrive() {
     time(&arriTime);
 }
 
-string Vehicle::getArriTime() {
+ string Vehicle::getArriTime() const{
     string s = asctime(localtime(&arriTime));//get the local time form of the car's arriving time
     return s;
 }
@@ -72,7 +72,7 @@ void Vehicle::depart() {
     time(&departTime);
 }
 
-string Vehicle::getType() {
+string Vehicle::getType() const {
     return this->type;
 }
 

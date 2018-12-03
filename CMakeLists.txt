@@ -16,4 +16,4 @@ add_executable(project3_regular
         Ticket.cpp
         Ticket.h
         Vehicle.cpp
-        Vehicle.h)
+        Vehicle.h merge.cpp)

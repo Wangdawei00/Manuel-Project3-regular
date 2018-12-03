@@ -21,16 +21,16 @@ public:
 
     static void setPrice(std::string fileName);
 
-    double get_all_time();//in seconds'
-    double getPrice();
+    double get_all_time() const ;//in seconds'
+    double getPrice()const ;
 
     void arrive();
 
-    std::string getArriTime();
+    std::string getArriTime() const;
 
     void depart();
 
-    std::string getType();
+    std::string getType() const;
 };
 
 #endif //PROJECT3_VEHICLE_H
