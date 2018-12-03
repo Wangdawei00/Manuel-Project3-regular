@@ -24,12 +24,10 @@ Floor::Floor(int rowIn, int columnIn, string typeIn,
 }
 
 vector<int> const &Floor::find_empty_slot() {
-//    int (*empty)[2];
     for (int i = 0; i < row; i++) {
         vector<Slot> a = slots[i];//take out the "i" row of the whole "slots"
         for (int j = 0; j < column; j++) {
             if (a[j].Is_empty() == 1) {//if there exists an empty slot
-//                return a[i][j];
                 static vector<int> ret(2, 0);//generate a vector containing 2 integers
                 ret[0] = i;
                 ret[1] = j;
