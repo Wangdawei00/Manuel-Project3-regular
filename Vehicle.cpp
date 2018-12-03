@@ -21,25 +21,35 @@ Vehicle::Vehicle(string type) {
 }
 
 void Vehicle::setPrice(string fileName) {
+
+
     if (typePrice.empty()) {
+
         string name;
         ifstream in;
         in.open(fileName, ios::in);
         string s(50, '*');
         cout << s << endl;
         cout << "Please set the price for the following vehicles (in RMB per hour): " << endl;
-//        typePrice.insert(make_pair("Car", 0));
-//        typePrice.insert(make_pair("Motorbike", 0));
-//        typePrice.insert(make_pair("Bicycle", 0));
-//        typePrice.insert(make_pair("Van", 0));
-        for (int i = 0; in >> name; ++i) {
-            typePrice.insert(make_pair(name, 0));//initialize the price for each type of vehicles by input
+        if (in.is_open()) {
+            for (int i = 0; in >> name; ++i) {
+                typePrice.insert(make_pair(name, 0));//initialize the price for each type of vehicles by input
+            }
+            for (auto &iter : typePrice) {
+                cout << iter.first << ": ";
+                cin >> iter.second; //output all the vehicles' type and their related prices
+            }
+            in.close();
+        } else {
+            for (auto item:vehicleNames) {
+                typePrice.insert(make_pair(item, 0));
+            }
+            for (auto &iter:typePrice) {
+                cout << iter.first << ": ";
+                cin >> iter.second;
+            }
         }
-        for (auto &iter : typePrice) {
-            cout << iter.first << ": ";
-            cin >> iter.second; //output all the vehicles' type and their related prices
-        }
-        in.close();
+
     } else {
         cerr << "You have already set the price for the vehicles!\n";
     }
@@ -76,18 +86,3 @@ string Vehicle::getType() const {
 }
 
 Vehicle::Vehicle() = default;
-
-void Vehicle::setPrice() {
-    if (typePrice.empty()) {
-        string s(50, '*');
-        cout << s << endl;
-        cout << "Please set the price for the following vehicles (in RMB per hour): " << endl;
-        for (auto item:vehicleNames) {
-            typePrice.insert(make_pair(item, 0));
-        }
-        for (auto &iter:typePrice) {
-            cout << iter.first << ": ";
-            cin >> iter.second;
-        }
-    }
-}

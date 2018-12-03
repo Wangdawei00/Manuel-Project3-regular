@@ -15,8 +15,6 @@ class ParkingLot {
 public:
     explicit ParkingLot(string fileName);
 
-    ParkingLot();
-
     vector<int> const &find_empty_slot(string type);
 
     // return floor and the location;

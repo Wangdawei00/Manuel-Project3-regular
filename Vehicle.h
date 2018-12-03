@@ -24,8 +24,6 @@ public:
 
     static void setPrice(std::string fileName);
 
-    static void setPrice();
-
     double get_all_time() const;//in seconds'
     double getPrice() const;
 
