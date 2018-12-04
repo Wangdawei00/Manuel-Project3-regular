@@ -21,10 +21,7 @@ Vehicle::Vehicle(string type) {
 }
 
 void Vehicle::setPrice(string fileName) {
-
-
     if (typePrice.empty()) {
-
         string name;
         ifstream in;
         in.open(fileName, ios::in);
