@@ -15,7 +15,7 @@ class Floor {
 public:
     Floor(int row, int column, string typeIn, int index);
 
-    vector<int> const &find_empty_slot();
+    vector<int> const &find_empty_slot() const;
 
     void clear_slot(int rowIn, int columnIn);
 
