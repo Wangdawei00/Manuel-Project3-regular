@@ -6,10 +6,12 @@
 #include <iostream>
 #include <random>
 #include "Ticket.h"
+#include "merge.h"
 
 using namespace std;
 
-Floor::Floor(int rowIn, int columnIn, string typeIn,int index) {//generate a new floor according to the rowIn,columnIn and typeIn
+Floor::Floor(int rowIn, int columnIn, string typeIn,
+             int index) {//generate a new floor according to the rowIn,columnIn and typeIn
     Slot S = Slot(std::move(typeIn));//generate a new slot(a type defined in "slot.h") with the type of "typeIn"
     int i, j;
     row = rowIn;
@@ -19,7 +21,7 @@ Floor::Floor(int rowIn, int columnIn, string typeIn,int index) {//generate a new
         a.push_back(S);//add new element(a new slot "S")to the end of the vector "a"
 
     }
-    this->index=index;
+    this->index = index;
     for (j = 0; j < row; ++j) {
         slots.push_back(a);//add "a"to the end of the whole slots
     }
@@ -52,26 +54,26 @@ void Floor::clear_slot(int rowIn, int columnIn) {
 vector<Slot> &Floor::operator[](int a) {
     return slots[a];//return a single row "a" from "slots"
 }
-vector<int>& Floor::return_size() {
-    static vector<int> size(2,0);
-    size[0]=row;size[1]=column;
+
+vector<int> const &Floor::return_size() {
+    static vector<int> size(2, 0);
+    size[0] = row;
+    size[1] = column;
     return size;
 }
-void refresh_Floor(Floor *F){ // this function is out of the class of Floor
-    for (int i=0;i<(*F).return_size()[0];i++){
-        for (int j=0;j<(*F).return_size()[1];j++){
-            if ((*F)[i][j].Is_empty()){ // jump the empty slots
+
+void refresh_Floor(Floor *F) { // this function is out of the class of Floor
+    for (int i = 0; i < (*F).return_size()[0]; i++) {
+        for (int j = 0; j < (*F).return_size()[1]; j++) {
+            if ((*F)[i][j].Is_empty()) { // jump the empty slots
                 continue;
-            }
-            else {
-                default_random_engine e;
-                uniform_real_distribution<double> u(0.0,100.0);
-                if (u(e)<=10.0){
+            } else {
+                random_device e;
+                uniform_real_distribution<double> u(0.0, 100.0);
+                if (u(e) <= 10.0) {
                     (*F)[i][j].Make_empty();
                     DepartTicket D;
-                    D.set((*F)[i][j].return_vehicle().get_all_time(),(*F)[i][j].return_vehicle().getPrice(),
-                            (*F)[i][j].return_vehicle().getType());
-                    D.print();
+                    printDepartTicket((*F)[i][j].return_vehicle());
                 }
             }
         }

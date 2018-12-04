@@ -23,10 +23,12 @@ std::string Slot::return_type() {
 }
 
 void Slot::Make_empty() {
+    V.depart();
     empty = true;
 }
 
 void Slot::put_vehicle(Vehicle &temp) {
     V = temp;//set the V to be the vehicle "temp"
+    V.arrive();
     empty = false;
 }
