@@ -10,7 +10,7 @@ Slot::Slot(std::string typein) {
     empty = true;//make this slot be empty
 }
 
-bool Slot::Is_empty() {
+bool Slot::Is_empty() const {
     return empty;
 }
 

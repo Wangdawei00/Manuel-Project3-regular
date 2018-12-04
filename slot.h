@@ -12,7 +12,7 @@ class Slot {
 public:
     explicit Slot(std::string typein);
 
-    bool Is_empty();
+    bool Is_empty() const;
 
     Vehicle &return_vehicle();
 
