@@ -2,6 +2,7 @@
 // Created by lenovo on 2018/11/28.
 //
 #include "parkingLot.h"
+#include "Floor.h"
 #include <fstream>
 #include <random>
 #include <map>
@@ -53,4 +54,9 @@ void ParkingLot::pushSlot(Vehicle &vehicle, int row, int column) {
     (*this)[(namesMap.find(vehicle.getType()))->second][row][column].put_vehicle(vehicle);
 }
 
+void ParkingLot::refreshParkingLot() {
+    for (int i = 0; i < 3; i++) {
+        refresh_Floor(&floors.find(names[1])->second);
+    }
+}
 
