@@ -20,7 +20,6 @@ int main(int argc, char *argv[]) {
     cout << timePeriod << endl;
     ParkingLot parkingLot(fileName);
     Vehicle::setPrice(fileName);
-
 //    cout << "Hello, World!" << endl;
     return 0;
 }
