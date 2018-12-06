@@ -24,6 +24,7 @@ public:
 
     Floor &operator[](int floorIndex);
 
+    void refreshParkingLot();
 private:
 
     map<string, Floor> floors;
