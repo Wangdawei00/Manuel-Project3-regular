@@ -27,7 +27,7 @@ Floor::Floor(int rowIn, int columnIn, string typeIn,
     }
 }
 
-vector<int> &Floor::find_empty_slot() {
+vector<int> const &Floor::find_empty_slot() {
 //    int (*empty)[2];
     for (int i = 0; i < row; i++) {
         vector<Slot> a = slots[i];//take out the "i" row of the whole "slots"
@@ -61,6 +61,7 @@ vector<int> const &Floor::return_size() {
     size[1] = column;
     return size;
 }
+
 
 void refresh_Floor(Floor *F) { // this function is out of the class of Floor
     for (int i = 0; i < (*F).return_size()[0]; i++) {
