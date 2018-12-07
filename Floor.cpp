@@ -62,6 +62,7 @@ vector<int> const &Floor::return_size() {
     return size;
 }
 
+
 void refresh_Floor(Floor *F) { // this function is out of the class of Floor
     for (int i = 0; i < (*F).return_size()[0]; i++) {
         for (int j = 0; j < (*F).return_size()[1]; j++) {

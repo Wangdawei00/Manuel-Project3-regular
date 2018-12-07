@@ -8,7 +8,7 @@ include_directories(.)
 add_executable(project3_regular
         Floor.cpp
         Floor.h
-        main.cpp
+        #        main.cpp
         parkingLot.cpp
         parkingLot.h
         slot.cpp
