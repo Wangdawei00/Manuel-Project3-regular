@@ -23,13 +23,13 @@ int main(int argc, char **argv) {
                 fileName = argv[i + 1];
         }
     }
-    Vehicle::setPrice(fileName);
-    ParkingLot parkingLot(fileName);
     if (timep == 0) {
         cerr << "You didn't correctly initialize the period of this simulation, please refer to the README file!"
              << endl;
         exit(233);
     }
+    Vehicle::setPrice(fileName);
+    ParkingLot parkingLot(fileName);
     for (int j = 0; j < timep; ++j) {
         printLeaving(parkingLot.refreshOut());
         parkingLot.refreshIn();
