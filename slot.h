@@ -1,31 +1,26 @@
 //
-// Created by starrynight on 2018/11/25.
+// Created by Wangdawei on 2018/12/7.
 //
 
-#ifndef MANUEL_PROJECT3_MASTER_SLOT_H
-#define MANUEL_PROJECT3_MASTER_SLOT_H
+#ifndef PROJECT3_SLOT_H
+#define PROJECT3_SLOT_H
 
 #include "Vehicle.h"
-#include <iostream>
 
 class Slot {
-public:
-    explicit Slot(std::string typein);
-
-    bool Is_empty() const;
-
-    Vehicle &return_vehicle();
-
-    std::string return_type();
-
-    void Make_empty();
-
-    void put_vehicle(Vehicle &temp);
-
 private:
-    Vehicle V;
-    std::string type;
+    Vehicle vehicle;
     bool empty;
+public:
+    Slot();
+
+    bool isEmpty() const;
+
+    void pushVehicle(const Vehicle &vehicle);
+
+    Vehicle &popVehicle();
+
+    Vehicle &getVehicle();
 };
 
-#endif //MANUEL_PROJECT3_MASTER_SLOT_H
+#endif //PROJECT3_SLOT_H

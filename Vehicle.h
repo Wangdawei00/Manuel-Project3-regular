@@ -1,5 +1,5 @@
 //
-// Created by Wangdawei on 2018/11/23.
+// Created by Wangdawei on 2018/12/7.
 //
 
 #ifndef PROJECT3_VEHICLE_H
@@ -9,30 +9,31 @@
 
 static const int numOfVehicleDefault = 4;
 static const char *vehicleNames[numOfVehicleDefault] = {"Car", "Van", "Motorbike", "Bicycle"};
+using namespace std;
 
 class Vehicle {
 private:
-    std::string type;
-    static std::map<std::string, double> typePrice;
-    double price;
+    static map<string, double> typePrice;
     time_t arriTime, departTime;
-
+    double price;
+    string type;
+    const static time_t base;
 public:
-
     Vehicle();
 
-    static void setPrice(std::string fileName);
-
-    double get_all_time() const;//in seconds'
-    double getPrice() const;
+    static void setPrice(const string &fileName);
 
     void arrive();
 
-    std::string getArriTime() const;
-
     void depart();
 
-    std::string getType() const;
+    const string &getArriTime() const;
+
+    double getInterval() const;
+
+    double getPrice() const;
+
+    const string &getType() const;
 };
 
 #endif //PROJECT3_VEHICLE_H

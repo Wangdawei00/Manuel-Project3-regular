@@ -1,34 +1,30 @@
 //
-// Created by starrynight on 2018/11/25.
+// Created by Wangdawei on 2018/12/7.
 //
 
 #include "slot.h"
-#include "Vehicle.h"
 
-Slot::Slot(std::string typein) {
-    type = std::move(typein);//set the type of the slot
-    empty = true;//make this slot be empty
-}
-
-bool Slot::Is_empty() const {
+bool Slot::isEmpty() const {
     return empty;
 }
 
-Vehicle &Slot::return_vehicle() {
-    return V;
+Vehicle &Slot::popVehicle() {
+    empty = true;
+    vehicle.depart();
+    return vehicle;
 }
 
-std::string Slot::return_type() {
-    return type;
+void Slot::pushVehicle(const Vehicle &vehicle) {
+    this->vehicle = vehicle;
+    this->vehicle.arrive();
+    empty = false;
 }
 
-void Slot::Make_empty() {
-    V.depart();
+Slot::Slot() {
+    vehicle = Vehicle();
     empty = true;
 }
 
-void Slot::put_vehicle(Vehicle &temp) {
-    V = temp;//set the V to be the vehicle "temp"
-    V.arrive();
-    empty = false;
+Vehicle &Slot::getVehicle() {
+    return vehicle;
 }

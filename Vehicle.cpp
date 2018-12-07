@@ -1,95 +1,88 @@
 //
-// Created by Wangdawei on 2018/11/23.
+// Created by Wangdawei on 2018/12/7.
 //
 
 #include "Vehicle.h"
-#include <iostream>
-#include <ctime>
-#include "Ticket.h"
+#include <cstdlib>
 #include <fstream>
+#include <iostream>
 #include <random>
-//#define DEBUG
-//const map<int, string> Vehicle::indexType={{1,"Bicycle"},{2,"Motorbike"},{3,"Car"},{4,"Van"}};
-//using namespace chrono;
+#include <ctime>
 
-using namespace std;
-
-map<string, double> Vehicle::typePrice; //set typePrice as a map whose key is a string and value is a double
+const time_t Vehicle::base = time(nullptr);
+map<string, double> Vehicle::typePrice;
 
 Vehicle::Vehicle() {
     string type;
-    random_device rd;
-    while (type.empty())
-        for (const auto &item: typePrice) {
-            if (rd() % 10 < 5) {
+//    std::mt19937 mt((unsigned int) time(nullptr));
+//    std::uniform_int_distribution<int> dist(1, 10);
+
+    while (type.empty()) {
+        for (auto const &item:typePrice) {
+            if (rand() % 10 < 5) {
                 type = item.first;
-                break;
             }
         }
+    }
     this->type = type;
-    this->price = typePrice.find(this->type)->second;
+    this->price = typePrice[type];
 }
 
-void Vehicle::setPrice(string fileName) {
+void Vehicle::setPrice(const string &fileName) {
     if (typePrice.empty()) {
-        string name;
         ifstream in;
         in.open(fileName, ios::in);
+        if (in.is_open()) {
+            string name;
+            for (int i = 0; in >> name; ++i) {
+                typePrice.insert(make_pair(name, 0));
+            }
+        } else {
+            for (auto const &item:vehicleNames) {
+                typePrice.insert(make_pair(item, 0));
+            }
+        }
         string s(50, '*');
         cout << s << endl;
         cout << "Please set the price for the following vehicles (in RMB per hour): " << endl;
-        if (in.is_open()) {
-            for (int i = 0; in >> name; ++i) {
-                typePrice.insert(make_pair(name, 0));//initialize the price for each type of vehicles by input
-            }
-            for (auto &iter : typePrice) {
-                cout << iter.first << ": ";
-                cin >> iter.second; //output all the vehicles' type and their related prices
-            }
-            in.close();
-        } else {
-            for (auto item:vehicleNames) {
-                typePrice.insert(make_pair(item, 0));
-            }
-            for (auto &iter:typePrice) {
-                cout << iter.first << ": ";
-                cin >> iter.second;
-            }
+        for (auto &item:typePrice) {
+            cout << item.first << ": ";
+            cin >> item.second;
         }
-
+        cout << s << endl;
     } else {
         cerr << "You have already set the price for the vehicles!\n";
     }
-#ifdef DEBUG
-    for (auto &iter:typePrice) {
-        cout<<iter.first<<": "<<iter.second<<endl;
-    }
-#endif
-}
 
-double Vehicle::get_all_time() const {
-    return difftime(departTime, arriTime);//calculate how long the vehicle spent in the parking lot
-}
-
-double Vehicle::getPrice() const {
-    return (this->price) * get_all_time();//price times time=cost
 }
 
 void Vehicle::arrive() {
     time(&arriTime);
-}
-
-string Vehicle::getArriTime() const {
-    string s = asctime(localtime(&arriTime));//get the local time form of the car's arriving time
-    return s;
+    arriTime += (arriTime - base) * 599;
+//    cout<<asctime(localtime(&arriTime))<<endl;
 }
 
 void Vehicle::depart() {
     time(&departTime);
+    departTime += (departTime - base) * 599;
+//    cout<<asctime(localtime(&departTime));
 }
 
-string Vehicle::getType() const {
-    return this->type;
+const string &Vehicle::getArriTime() const {
+    static string s;
+//    cout<<"Test! "<<s;
+    s = asctime(localtime(&arriTime));
+    return s;
 }
 
-//Vehicle::Vehicle() = default;
+const string &Vehicle::getType() const {
+    return type;
+}
+
+double Vehicle::getInterval() const {
+    return difftime(departTime, arriTime);
+}
+
+double Vehicle::getPrice() const {
+    return price * getInterval() / 3600;
+}

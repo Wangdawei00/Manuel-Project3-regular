@@ -1,82 +1,76 @@
 //
-// Created by starrynight on 2018/11/25.
+// Created by Wangdawei on 2018/12/7.
 //
 
 #include "Floor.h"
-#include <iostream>
+#include <ctime>
 #include <random>
 #include "Ticket.h"
-#include "merge.h"
+#include <iostream>
+#include <vector>
 
-using namespace std;
-
-Floor::Floor(int rowIn, int columnIn, string typeIn,
-             int index) {//generate a new floor according to the rowIn,columnIn and typeIn
-    Slot S = Slot(std::move(typeIn));//generate a new slot(a type defined in "slot.h") with the type of "typeIn"
-    int i, j;
-    row = rowIn;
-    column = columnIn;
-    vector<Slot> a;//generate a vector of Slot(a type defined in "slot.h")
-    for (i = 0; i < column; ++i) {
-        a.push_back(S);//add new element(a new slot "S")to the end of the vector "a"
-
-    }
+Floor::Floor(const string &type, int index) {
+//    cout << "A floor is created.\n";
+    this->type = type;
+//    std::mt19937 mt((unsigned int) time(nullptr));
+//    std::uniform_int_distribution<unsigned int> dist(1, 10);
+//    column = dist(mt);
+//    row = dist(mt);
+    column = row = 5;
+//    Slot newSlot;
+//    vector<Slot> slotRow(column, newSlot);
+//    for (int i = 0; i < row; ++i) {
+//        slots.push_back(slotRow);
+//    }
+    vector<vector<Slot>> temp(row, vector<Slot>(column, Slot()));
+    slots = temp;
     this->index = index;
-    for (j = 0; j < row; ++j) {
-        slots.push_back(a);//add "a"to the end of the whole slots
-    }
+
 }
 
-vector<int> const &Floor::find_empty_slot() {
-//    int (*empty)[2];
-    for (int i = 0; i < row; i++) {
-        vector<Slot> a = slots[i];//take out the "i" row of the whole "slots"
-        for (int j = 0; j < column; j++) {
-            if (a[j].Is_empty() == 1) {//if there exists an empty slot
-//                return a[i][j];
-                static vector<int> ret(2, 0);//generate a vector containing 2 integers
-                ret[0] = i;
-                ret[1] = j;
-                return ret;
+vector<Slot> &Floor::operator[](int row) {
+    return slots[row];
+}
+
+vector<Vehicle> Floor::refresh() {
+    vector<Vehicle> vehicles;
+//    std::mt19937 mt((unsigned int) time(nullptr));
+//    std::uniform_int_distribution<unsigned int> dist(1, 10);
+    for (auto &vec:slots)
+        for (auto &slot:vec) {
+            if (!slot.isEmpty() && rand() % 10 <= 5) {
+                vehicles.push_back(slot.popVehicle());
             }
         }
-    }
-    static vector<int> b = vector<int>(2, -1);//otherwise return (-1,-1) to indicate no empty slot
-    return b;
+    return vehicles;
 }
 
-
-void Floor::clear_slot(int rowIn, int columnIn) {
-    vector<Slot> a = slots[rowIn];//set "a" to be a single row(row number:rowIn) from "slots"
-    a[columnIn].Make_empty();//set the "columnIn" slot to be empty
-}
-
-vector<Slot> &Floor::operator[](int a) {
-    return slots[a];//return a single row "a" from "slots"
-}
-
-vector<int> const &Floor::return_size() {
-    static vector<int> size(2, 0);
-    size[0] = row;
-    size[1] = column;
-    return size;
-}
-
-
-void refresh_Floor(Floor *F) { // this function is out of the class of Floor
-    for (int i = 0; i < (*F).return_size()[0]; i++) {
-        for (int j = 0; j < (*F).return_size()[1]; j++) {
-            if ((*F)[i][j].Is_empty()) { // jump the empty slots
-                continue;
-            } else {
-                random_device e;
-                uniform_real_distribution<double> u(0.0, 100.0);
-                if (u(e) <= 10.0) {
-                    (*F)[i][j].Make_empty();
-                    DepartTicket D;
-                    printDepartTicket((*F)[i][j].return_vehicle());
+vector<int> Floor::findEmpty() const {
+    if (!isFull())
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                if (slots[i][j].isEmpty()) {//if there exists an empty slot
+                    //                return a[i][j];
+                    vector<int> ret(2, 0);//generate a vector containing 2 integers
+                    ret[0] = i;
+                    ret[1] = j;
+                    return ret;
                 }
             }
         }
+    return vector<int>(2, -1);
+}
+
+bool Floor::isFull() const {
+    for (auto const &slotRow:slots) {
+        for (auto const &slot:slotRow) {
+            if (slot.isEmpty())
+                return false;
+        }
     }
+    return true;
+}
+
+int Floor::getIndex() const {
+    return index;
 }

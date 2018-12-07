@@ -1,35 +1,32 @@
 //
-// Created by starrynight on 2018/11/25.
+// Created by Wangdawei on 2018/12/7.
 //
 
-#ifndef MANUEL_PROJECT3_MASTER_FLOOR_H
-#define MANUEL_PROJECT3_MASTER_FLOOR_H
+#ifndef PROJECT3_FLORR_H
+#define PROJECT3_FLORR_H
 
-#include <iostream>
-#include "slot.h"
 #include <vector>
-
-using namespace std;
+#include "slot.h"
 
 class Floor {
-public:
-    Floor(int row, int column, string typeIn, int index);
-
-    vector<int> const &find_empty_slot();
-
-    void clear_slot(int rowIn, int columnIn);
-
-    vector<Slot> &operator[](int a);
-
-    vector<int> const &return_size();
-
 private:
-    int row, column;
     vector<vector<Slot>> slots;
-    std::string type;
+    unsigned int row, column;
+    string type;
     int index;
+public:
+    vector<Slot> &operator[](int row);
+
+    Floor(const string &type, int index);
+
+    vector<Vehicle> refresh();
+
+    vector<int> findEmpty() const;
+
+    bool isFull() const;
+
+    int getIndex() const ;
 };
 
-void refresh_Floor(Floor *F);
 
-#endif //MANUEL_PROJECT3_MASTER_FLOOR_H
+#endif //PROJECT3_FLORR_H
