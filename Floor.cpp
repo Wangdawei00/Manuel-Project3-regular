@@ -27,7 +27,7 @@ Floor::Floor(int rowIn, int columnIn, string typeIn,
     }
 }
 
-vector<int> &Floor::find_empty_slot() {
+vector<int> const &Floor::find_empty_slot() {
 //    int (*empty)[2];
     for (int i = 0; i < row; i++) {
         vector<Slot> a = slots[i];//take out the "i" row of the whole "slots"

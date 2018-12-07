@@ -3,6 +3,7 @@
 #include "Ticket.h"
 #include <thread>
 #include <cstring>
+#include <random>
 //#include <parkingLot.h>
 //#include <GL/glut.h>
 using namespace std;
@@ -18,7 +19,9 @@ int main(int argc, char *argv[]) {
         }
     }
     cout << timePeriod << endl;
-    ParkingLot parkingLot(fileName);
+    random_device randomDevice;
+    cout << randomDevice() << endl;
+//    ParkingLot parkingLot(fileName);
     Vehicle::setPrice(fileName);
 //    cout << "Hello, World!" << endl;
     return 0;

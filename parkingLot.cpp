@@ -36,8 +36,8 @@ vector<int> const &ParkingLot::find_empty_slot(string type) {
     Floor &floor = floors.find(type)->second;
     static vector<int> result(3, 0);
     result = floor.find_empty_slot();
-    result.insert(result.begin(), namesMap.find(
-            type)->second);//in "result", there are three elements,which are [floor number][row][column] respectively
+    result.insert(result.begin(), namesMap.find(type)->second);
+    //in "result", there are three elements,which are [floor number][row][column] respectively
     return result;
 }
 

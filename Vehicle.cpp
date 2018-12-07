@@ -7,6 +7,7 @@
 #include <ctime>
 #include "Ticket.h"
 #include <fstream>
+#include <random>
 //#define DEBUG
 //const map<int, string> Vehicle::indexType={{1,"Bicycle"},{2,"Motorbike"},{3,"Car"},{4,"Van"}};
 //using namespace chrono;
@@ -15,8 +16,17 @@ using namespace std;
 
 map<string, double> Vehicle::typePrice; //set typePrice as a map whose key is a string and value is a double
 
-Vehicle::Vehicle(string type) {
-    this->type = move(type);
+Vehicle::Vehicle() {
+    string type;
+    random_device rd;
+    while (type.empty())
+        for (const auto &item: typePrice) {
+            if (rd() % 10 < 5) {
+                type = item.first;
+                break;
+            }
+        }
+    this->type = type;
     this->price = typePrice.find(this->type)->second;
 }
 
@@ -82,4 +92,4 @@ string Vehicle::getType() const {
     return this->type;
 }
 
-Vehicle::Vehicle() = default;
+//Vehicle::Vehicle() = default;

@@ -18,7 +18,6 @@ private:
     time_t arriTime, departTime;
 
 public:
-    explicit Vehicle(std::string);
 
     Vehicle();
 
