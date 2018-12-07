@@ -13,9 +13,10 @@ int main(int argc, char **argv) {
     srand((unsigned int) time(nullptr));
     int timep = 0;
     string fileName;
-    if (argc == 1)
+    if (argc == 1) {
         cerr << "You didn't provide the period of time in the command line!\n";
-    else {
+        exit(233);
+    } else {
         for (int i = 1; i < argc; ++i) {
             if (strcmp(argv[i], "--time") == 0)
                 timep = strtol(argv[i + 1], nullptr, 10);
