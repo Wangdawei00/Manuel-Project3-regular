@@ -16,7 +16,9 @@ Floor::Floor(const string &type, int index) {
 //    std::uniform_int_distribution<unsigned int> dist(1, 10);
 //    column = dist(mt);
 //    row = dist(mt);
-    column = row = 5;
+//    column = row = 5;
+    row = (unsigned int) rand() % 8 + 1;
+    column = (unsigned int) rand() % 8 + 1;
 //    Slot newSlot;
 //    vector<Slot> slotRow(column, newSlot);
 //    for (int i = 0; i < row; ++i) {
