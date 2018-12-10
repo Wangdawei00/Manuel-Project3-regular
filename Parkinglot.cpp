@@ -25,6 +25,7 @@ ParkingLot::ParkingLot(const string &fileName) {
         for (int i = 0; in >> name; ++i) {
             floors.insert(make_pair(name, Floor(name, i)));
         }
+		in.close();
     } else {
         for (int i = 0; i < numOfVehicleDefault; ++i) {
             Floor floor1(vehicleNames[i], i);

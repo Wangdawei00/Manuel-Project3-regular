@@ -37,6 +37,7 @@ void Vehicle::setPrice(const string &fileName) {
             for (int i = 0; in >> name; ++i) {
                 typePrice.insert(make_pair(name, 0));
             }
+			in.close();
         } else {
             for (auto const &item:vehicleNames) {
                 typePrice.insert(make_pair(item, 0));
