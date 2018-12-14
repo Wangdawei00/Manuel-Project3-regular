@@ -14,9 +14,6 @@ map<string, double> Vehicle::typePrice;
 
 Vehicle::Vehicle() {
     string type;
-//    std::mt19937 mt((unsigned int) time(nullptr));
-//    std::uniform_int_distribution<int> dist(1, 10);
-
     while (type.empty()) {
         for (auto const &item:typePrice) {
             if (rand() % 10 < 5) {
@@ -60,7 +57,6 @@ void Vehicle::setPrice(const string &fileName) {
 void Vehicle::arrive() {
     time(&arriTime);
     arriTime += (arriTime - base) * 599;
-//    cout<<asctime(localtime(&arriTime))<<endl;
 }
 
 void Vehicle::depart() {
@@ -71,7 +67,6 @@ void Vehicle::depart() {
 
 const string &Vehicle::getArriTime() const {
     static string s;
-//    cout<<"Test! "<<s;
     s = asctime(localtime(&arriTime));
     return s;
 }

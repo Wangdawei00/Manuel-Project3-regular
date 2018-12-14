@@ -14,7 +14,7 @@ Brief Introduction:
                     Slot is the minimum unit of a floor, which means that a floor contains several slots. 
 	    Every floor contains 5x5 slots.
                     Similarly, floor is the minimum unit of parkingLot, which means several floors form a parkingLot.
-	(attention£ºwe define 1s in real life to be 10 minutes in the programme)
+	(attention: we define 1s in real life to be 10 minutes in the programme)
 	
 	Ticket.cpp contains all the methods and attributes related to ticket, such as printing, recording the time, calculate the price,etc.
 	
@@ -27,17 +27,20 @@ Main Idea:
 		        2)parkingLot.refreshIn()/* just simply initialze the slot and print the arrival ticket*/
 
 Initialzation:
+		
              ATTENTION: as a player, you need to edit configurations, which can be found in"run",
 	 and write something in programme argument such as"--time 25"(25 means the number of cars , which you can change)
-	
-	as a player, at first, you need to initialize the prices for every kind of vehicle respectively	
+	 you can also create your own parkingLot. You may do this following these procedures:
+	 1) write all the names of the type of vehicles you want a parkingLot to accept in a file, separating each name with a space or \n(whatever white space character you like)
+	 2) when running the program, add a "--file" command line argument and follow it with the relative path of the file mentioned above.
+	 3) successfully run!
+		if no files are provided, we will take  "Car", "Van", "Motorbike", "Bicycle" by default.
 
-	a kind reminder: we can read a file if there's one created by the player to define the names of vehicles;
-		          otherwise, we will take  "Car", "Van", "Motorbike", "Bicycle" by default
+	as a player, at first, you need to initialize the prices for every kind of vehicle respectively	
 
 Detailed Description:
 
-	Because most of those .cpp files above are the interfaces of different classes, I would like to directly explain those classes.
+	Because most of those .cpp files above are the implementation of the interfaces of different classes, I would like to directly explain those classes.
 	
 	Class Slot:
 		Every slot has its type. which is related to the vehicles. That's because the basic floor needs to make all the vehicles stop on this floor belonging to the same type, so that drivers can easily identify which floor to go. And circumstances such as a bike occupying a slot for cars will never happen.

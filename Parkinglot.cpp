@@ -32,15 +32,11 @@ ParkingLot::ParkingLot(const string &fileName) {
             floors.insert(make_pair(vehicleNames[i], floor1));
         }
     }
-
 }
 
 
 void ParkingLot::refreshIn() {
-//    vector<Vehicle> ret;
-//    std::mt19937 mt((unsigned int) time(nullptr));
     ArriTicket arriTicket;
-//    std::uniform_int_distribution<unsigned int> dist(0, 10);
     for (int i = 0; i < rand() % 6; ++i) {
         Vehicle temp;
         Floor &floor = floors.find(temp.getType())->second;
@@ -52,5 +48,4 @@ void ParkingLot::refreshIn() {
             arriTicket.print();
         }
     }
-//    return ret;
 }
